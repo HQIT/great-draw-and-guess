@@ -58,7 +58,7 @@ function filterEvent (oldEvent) {
     case 'mouse':
     case 'pointer':
       var id = oldEvent.pointerId || 0
-      ev.eventCode == 3 ? delete pointers[id] : pointers[id] = oldEvent
+      ev.eventCode === 3 ? delete pointers[id] : pointers[id] = oldEvent
       ev.changedPointers = [{id: id, clientX: oldEvent.clientX, clientY: oldEvent.clientY}]
       ev.pointers = Object.keys(pointers).map(function (id) {
         return {id: id, clientX: pointers[id].clientX, clientY: pointers[id].clientY}
@@ -282,29 +282,26 @@ class Sketch {
   }
 }
 
-/*
-if (typeof Object.defineProperties == 'function') {
+if (typeof Object.defineProperties === 'function') {
   'width height'.split(' ').forEach(function (prop) {
-    Object.defineProperty(struct.prototype, prop, {
+    Object.defineProperty(Sketch.prototype, prop, {
       get: function () {
         return this.canvas[prop] / dpr
       },
       set: function (value) {
         this.canvas[prop] = value * dpr
-        this.ctx.scale(dpr, dpr)//retina support
+        this.ctx.scale(dpr, dpr) // retina support
       },
       enumerable: true
     })
   })
 
-  Object.defineProperty(struct.prototype, 'steps', {
+  Object.defineProperty(Sketch.prototype, 'steps', {
     get: function () {
       return this.actions.length
     },
     enumerable: true
   })
-
 }
-*/
 
 export default Sketch

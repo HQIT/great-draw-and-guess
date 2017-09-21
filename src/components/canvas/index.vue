@@ -19,10 +19,8 @@
     name: 'x-canvas',
     mounted () {
       this.sketch = new SketchJS(this.$refs.refCanvas, {
-        // width: this.$refs.refCanvas.clientWidth,
-        // height: this.$refs.refCanvas.clientHeight,
-        width: 300,
-        height: 300,
+        width: this.$refs.refCanvas.clientWidth,
+        height: this.$refs.refCanvas.clientHeight,
         color: 'red',
         bgcolor: '#eee'
       })
@@ -35,8 +33,8 @@
     computed: {
       canvasStyle () {
         return {
-          width: '300px',
-          height: '300px',
+          width: '100%',
+          height: '100%',
           backgroundColor: '#CCC'
         }
       }
@@ -46,7 +44,7 @@
 
 <style scoped="x-canvas">
   .canvas-wrapper {
-    /*width: 500px;*/
+    width: 500px;
     position: relative;
   }
 </style>
