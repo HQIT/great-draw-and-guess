@@ -85,7 +85,7 @@
 
   export default {
     mounted () {
-      const ws = new WebSocket('ws://localhost:8090')
+      const ws = new WebSocket('ws://localhost:8090/?room=100')
       let draw = new Draw('canvas')
       let btn = document.getElementById('btn')
       ws.onopen = () => {
